@@ -1,0 +1,22 @@
+{
+  "name": "nodejsexpress",
+  "version": "1.0.0",
+  "description": "Practice process of Express template",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kongjieyu/nodeJSExpress.git"
+  },
+  "author": "may",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kongjieyu/nodeJSExpress/issues"
+  },
+  "homepage": "https://github.com/kongjieyu/nodeJSExpress#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
