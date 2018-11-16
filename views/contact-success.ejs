@@ -9,13 +9,8 @@
 </head>
 <body>
     <% include partials/nav.ejs %>
-    <h1>Welcome to the profile of <%= person %></h1>
-    <p><strong>Age: </strong><%= data.age%></p>
-    <p><strong>Job: </strong><%= data.job%></p>
-        <ul>
-            <% data.hobbies.forEach(function(item){ %>
-                <li><%= item %></li>
-            <% });%>           
-        </ul>
+    <h1>Thanks for contact</h1>
+    <p>You contacted <%= data.who %> in the <%= data.department %> Department</p>
+    <p>We will reply to you at <%= data.email %></p>
 </body>
 </html>

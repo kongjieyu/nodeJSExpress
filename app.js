@@ -1,21 +1,41 @@
 //'express' is the module name inside the node_modules file, this line of code help us access to that module, get all the functionality express have
 var express = require('express');
 
+//use body-parser as the middleware to handle post.
+var bodyParser = require('body-parser');
+
 //fire the express function, variable app are able to access to the methods of express
 var app = express()
+
+// create application/json parser
+var jsonParser = bodyParser.json()
+
+// create application/x-www-form-urlencoded parser, middleware
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 //set ejs as view engine
 //when we request some views or template, it will look for the view folder, so we need to creat a view folder.
 app.set('view engine', 'ejs');
 
-//use sendFile to allocate the html path
+//middleware, whenever the link include assets, this middle is gonna fire.
+app.use('/assets', express.static('assets'));
+
+//use render
 app.get('/', function(req, res){
-    res.sendFile(__dirname + '/index.html')
+    res.render('index');
 });
 
-//use sendFile to allocate the html path
+//use render
 app.get('/contact', function(req, res){
-     res.sendFile(__dirname + '/contact.html')
+    console.log(req.query);
+    res.render('contact', {qs: req.query});
+});
+
+//handle the post request here, the data we summit in contact.ejs is gonna pass through the middelware(urlencodedParser)
+//with the help of urlencodedParser, we can access the data on the request object by using request.body
+app.post('/contact-success', urlencodedParser, function(req, res){
+    console.log(req.body);
+    res.render('contact-success', {data: req.body});
 });
 
 app.get('/profile/:name', function(req, res){
